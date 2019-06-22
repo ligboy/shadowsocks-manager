@@ -141,6 +141,7 @@ const connect = () => {
 };
 
 const sendMessage = message => {
+  logger.info(`shadowsocks sendMessage(${host}, ${port}, ${message})`)
   client.send(message, port, host);
   return Promise.resolve('ok');
 };
@@ -172,7 +173,7 @@ let restartFlow = 300;
 const compareWithLastFlow = async (flow, lastFlow) => {
   if(shadowsocksType === 'python') {
     return flow;
-  } 
+  }
   const realFlow = {};
   if(!lastFlow) {
     for(const f in flow) {
