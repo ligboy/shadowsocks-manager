@@ -48,6 +48,7 @@ let portsForLibev = [];
 const connect = () => {
   client.on('message', async msg => {
     const msgStr = new String(msg);
+    logger.info(`shadowsocks onMessage (${msgStr})`)
     if(msgStr.substr(0, 4) === 'pong') {
       shadowsocksType = 'python';
     } else if(msgStr.substr(0, 2) === '[{') {
